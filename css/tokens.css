@@ -1,0 +1,35 @@
+/* Design tokens: colores, tipografías y medidas. Única fuente de verdad del tema. */
+:root {
+  --bg: #f6f7fb; --surface: #ffffff; --surface-2: #eef0f7; --line: #dde1ec; --line-soft: #eceff6;
+  --fg: #161a2b; --muted: #5d6480; --faint: #8a90a8;
+  --accent: #3049d6; --accent-soft: #e3e8ff; --accent-fg: #ffffff;
+  --now: #e0452f; --danger: #c8342a;
+  --c-personal: #3049d6; --c-trabajo: #0f8a7a; --c-salud: #d1453b; --c-familia: #b9700e; --c-social: #8a3fc4;
+  --shadow: 0 12px 40px rgba(22, 26, 43, .16);
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --hour: 48px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1220; --surface: #171b2c; --surface-2: #1f2438; --line: #2b3150; --line-soft: #222842;
+    --fg: #e9ecf7; --muted: #a2a9c6; --faint: #737a99;
+    --accent: #8a9cff; --accent-soft: #262f5c; --accent-fg: #0f1220;
+    --now: #ff6b55; --danger: #ff6b60;
+    --c-personal: #8a9cff; --c-trabajo: #3fc7b3; --c-salud: #ff7d72; --c-familia: #f0a945; --c-social: #c08cf0;
+    --shadow: 0 12px 40px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1220; --surface: #171b2c; --surface-2: #1f2438; --line: #2b3150; --line-soft: #222842;
+  --fg: #e9ecf7; --muted: #a2a9c6; --faint: #737a99;
+  --accent: #8a9cff; --accent-soft: #262f5c; --accent-fg: #0f1220;
+  --now: #ff6b55; --danger: #ff6b60;
+  --c-personal: #8a9cff; --c-trabajo: #3fc7b3; --c-salud: #ff7d72; --c-familia: #f0a945; --c-social: #c08cf0;
+  --shadow: 0 12px 40px rgba(0, 0, 0, .5);
+  color-scheme: dark;
+}

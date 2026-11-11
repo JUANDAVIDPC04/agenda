@@ -1,0 +1,19 @@
+/* Vista Mes */
+.month { display: grid; grid-template-rows: auto 1fr; height: 100%; }
+.month-dow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-bottom: 1px solid var(--line-soft); }
+.month-dow div { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 8px 10px; font-weight: 600; }
+.month-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); min-height: 0; }
+.mcell { border-right: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); padding: 4px 4px 2px; min-width: 0; min-height: 88px; overflow: hidden; display: flex; flex-direction: column; gap: 2px; cursor: pointer; }
+.mcell:nth-child(7n) { border-right: 0; }
+.mcell.out { background: var(--bg); }
+.mcell.out .dnum { color: var(--faint); }
+.mcell.weekend:not(.out) { background: color-mix(in srgb, var(--surface-2) 40%, var(--surface)); }
+.dnum { font-size: 12px; font-weight: 600; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-variant-numeric: tabular-nums; border: 0; background: transparent; padding: 0; align-self: flex-start; margin-left: 2px; }
+.dnum:hover { background: var(--surface-2); }
+.mcell.today .dnum { background: var(--accent); color: var(--accent-fg); }
+.more { font-size: 11px; color: var(--muted); padding: 0 6px; border: 0; background: transparent; text-align: left; font-weight: 600; }
+.more:hover { color: var(--accent); }
+
+@media (max-width: 860px) {
+  .mcell { min-height: 64px; }
+}

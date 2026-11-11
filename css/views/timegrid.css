@@ -1,0 +1,30 @@
+/* Vistas Semana y Día (rejilla horaria) */
+.tgrid-wrap { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.tg-head { display: grid; border-bottom: 1px solid var(--line-soft); flex: none; }
+.tg-head .hcell { padding: 8px 6px 6px; text-align: center; min-width: 0; }
+.tg-head .hcell small { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.tg-head .hcell button { border: 0; background: transparent; font-family: var(--f-display); font-size: 22px; font-weight: 500; width: 40px; height: 40px; border-radius: 50%; padding: 0; font-variant-numeric: tabular-nums; }
+.tg-head .hcell button:hover { background: var(--surface-2); }
+.tg-head .hcell.today small { color: var(--accent); }
+.tg-head .hcell.today button { background: var(--accent); color: var(--accent-fg); }
+.tg-allday { display: grid; border-bottom: 1px solid var(--line-soft); flex: none; }
+.tg-allday .lbl { font-size: 10px; color: var(--faint); text-align: right; padding: 4px 6px; font-family: var(--f-mono); }
+.tg-allday .ad { padding: 2px; display: flex; flex-direction: column; gap: 2px; min-width: 0; border-left: 1px solid var(--line-soft); }
+.tg-body { flex: 1; overflow: auto; min-height: 0; position: relative; }
+.tg-inner { display: grid; position: relative; height: calc(var(--hour) * 24); }
+.hours { position: relative; }
+.hours span { position: absolute; right: 6px; font-family: var(--f-mono); font-size: 10.5px; color: var(--faint); transform: translateY(-50%); }
+.col { position: relative; border-left: 1px solid var(--line-soft); background-image: linear-gradient(var(--line-soft) 1px, transparent 1px); background-size: 100% var(--hour); min-width: 0; }
+.col.weekend { background-color: color-mix(in srgb, var(--surface-2) 35%, transparent); }
+
+/* Bloque de evento */
+.ev { position: absolute; border-radius: 6px; padding: 3px 6px; font-size: 12px; overflow: hidden; border: 0; text-align: left; background: color-mix(in srgb, var(--c) 18%, var(--surface)); color: var(--fg); border-left: 3px solid var(--c); line-height: 1.25; display: flex; flex-direction: column; cursor: pointer; }
+.ev:hover { background: color-mix(in srgb, var(--c) 28%, var(--surface)); z-index: 3; }
+.ev b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ev span { font-family: var(--f-mono); font-size: 10.5px; color: var(--muted); }
+.ev.short { flex-direction: row; gap: 6px; align-items: baseline; }
+
+/* Línea de "ahora" y fantasma de arrastre */
+.nowline { position: absolute; left: 0; right: 0; height: 2px; background: var(--now); z-index: 4; pointer-events: none; }
+.nowline::before { content: ""; position: absolute; left: -5px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--now); }
+.ghost { position: absolute; left: 2px; right: 2px; border-radius: 6px; background: var(--accent-soft); border: 1px dashed var(--accent); pointer-events: none; z-index: 2; }

@@ -1,0 +1,15 @@
+/* Aviso de instalación y ajustes cuando la app corre instalada. */
+.install-banner { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line-soft); font-size: 13px; line-height: 1.4; flex: none; }
+.install-banner img { border-radius: 9px; flex: none; }
+.install-banner .txt { flex: 1; min-width: 0; }
+.install-banner .btn { flex: none; }
+.app.goals-mode .install-banner { display: none; }
+
+/* Instalada: sensación de app nativa (sin resaltado al tocar ni rebote al hacer scroll) */
+@media (display-mode: standalone) {
+  body { -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+  .app {
+    padding-top: max(12px, env(safe-area-inset-top, 0px));
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+  }
+}

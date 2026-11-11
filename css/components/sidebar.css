@@ -1,0 +1,42 @@
+/* Panel lateral: botón crear, mini-calendario, calendarios, próximos y aviso de ejemplos. */
+.create { align-self: flex-start; padding: 11px 20px 11px 16px; font-size: 15px; box-shadow: 0 2px 8px rgba(48, 73, 214, .25); display: flex; gap: 8px; align-items: center; }
+.create b { font-size: 20px; line-height: 1; font-weight: 400; }
+
+/* Mini-calendario */
+.mini { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 14px; padding: 12px; }
+.mini-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.mini-head span { font-weight: 600; }
+.mini-head span::first-letter { text-transform: uppercase; }
+.mini-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; font-variant-numeric: tabular-nums; }
+.mini-grid .dow { font-size: 11px; color: var(--faint); padding: 4px 0; font-weight: 600; }
+.mini-grid button { border: 0; background: transparent; border-radius: 50%; aspect-ratio: 1; font-size: 12px; padding: 0; position: relative; max-width: 100%; }
+.mini-grid button:hover { background: var(--surface-2); }
+.mini-grid button.out { color: var(--faint); }
+.mini-grid button.today { background: var(--accent); color: var(--accent-fg); }
+.mini-grid button.sel:not(.today) { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.mini-grid button.has::after { content: ""; position: absolute; bottom: 3px; left: 50%; width: 3px; height: 3px; margin-left: -1.5px; border-radius: 50%; background: currentColor; opacity: .6; }
+
+/* Títulos de sección del panel */
+.cals h3, .upcoming h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+
+/* Calendarios */
+.cal-row { display: flex; align-items: center; gap: 10px; padding: 5px 4px; border-radius: 8px; cursor: pointer; user-select: none; }
+.cal-row:hover { background: var(--surface-2); }
+.cal-row input { appearance: none; width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--c); margin: 0; display: grid; place-items: center; cursor: pointer; }
+.cal-row input:checked { background: var(--c); }
+.cal-row input:checked::after { content: ""; width: 4px; height: 8px; border: solid var(--surface); border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.cal-row .n { margin-left: auto; font-family: var(--f-mono); font-size: 11px; color: var(--faint); }
+
+/* Próximos */
+.up-item { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 6px 4px; border-radius: 8px; cursor: pointer; border: 0; background: transparent; text-align: left; width: 100%; }
+.up-item:hover { background: var(--surface-2); }
+.up-item .t { font-family: var(--f-mono); font-size: 11px; color: var(--muted); padding-top: 2px; }
+.up-item .x { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-left: 3px solid var(--c); padding-left: 8px; }
+.up-item .x small { display: block; color: var(--faint); font-size: 11px; }
+
+.examples-note { font-size: 12px; background: var(--accent-soft); color: var(--fg); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; line-height: 1.45; }
+.examples-note button { align-self: flex-start; }
+
+@media (max-width: 860px) {
+  .create { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 20; border-radius: 16px; }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <title>Mi Agenda</title>
+  <meta name="description" content="Calendario, tareas y objetivos. Funciona sin conexión.">
+
+  <!-- App instalable (PWA) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1220" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <!-- iPhone / iPad -->
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Agenda">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <!-- Estilos: tokens → base → layout → componentes → vistas -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components/sidebar.css">
+  <link rel="stylesheet" href="css/components/quote.css">
+  <link rel="stylesheet" href="css/components/chip.css">
+  <link rel="stylesheet" href="css/components/dialog.css">
+  <link rel="stylesheet" href="css/views/month.css">
+  <link rel="stylesheet" href="css/views/timegrid.css">
+  <link rel="stylesheet" href="css/views/agenda.css">
+  <link rel="stylesheet" href="css/views/tasks.css">
+  <link rel="stylesheet" href="css/views/goals.css">
+  <link rel="stylesheet" href="css/components/install.css">
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand"><span class="brand-mark" id="brandDay"></span>Mi Agenda</div>
+      <button class="btn" id="backBtn" hidden>‹ Volver a la agenda</button>
+      <button class="btn" id="todayBtn" title="Ir a hoy (T)">Hoy</button>
+      <button class="icon-btn" id="prevBtn" aria-label="Anterior">‹</button>
+      <button class="icon-btn" id="nextBtn" aria-label="Siguiente">›</button>
+      <div class="period" id="period"></div>
+      <div class="spacer"></div>
+      <span class="status hide-sm" id="status" data-s="load"><i></i><span>Conectando…</span></span>
+      <button class="btn" id="goalsBtn" title="Objetivos (O)">Objetivos</button>
+      <div class="seg" id="viewSwitcher" role="group" aria-label="Vista">
+        <button data-view="day" title="Día (D)">Día</button>
+        <button data-view="week" title="Semana (S)">Semana</button>
+        <button data-view="month" title="Mes (M)">Mes</button>
+        <button data-view="agenda" title="Agenda (A)">Agenda</button>
+        <button data-view="tasks" title="Tareas (L)">Tareas</button>
+      </div>
+    </header>
+
+    <div class="main">
+      <aside>
+        <button class="btn primary create" id="createBtn"><b>+</b> Crear</button>
+        <div class="mini" id="mini"></div>
+        <div class="examples-note" id="exNote" hidden>
+          <span>Algunos eventos son de ejemplo para que veas cómo funciona. Bórralos cuando quieras.</span>
+          <button class="btn" id="clearEx">Borrar ejemplos</button>
+        </div>
+        <div class="cals" id="cals"></div>
+        <div class="upcoming" id="upcoming"></div>
+        <div class="hint hide-sm">
+          Atajos: <kbd>N</kbd> nuevo · <kbd>T</kbd> hoy · <kbd>D</kbd> <kbd>S</kbd> <kbd>M</kbd> <kbd>A</kbd> <kbd>L</kbd> vistas · <kbd>O</kbd> objetivos · <kbd>←</kbd> <kbd>→</kbd> navegar.<br>
+          En semana o día, arrastra sobre las horas para crear un evento.
+        </div>
+      </aside>
+
+      <div class="maincol">
+        <div class="install-banner" id="installBanner" role="region" aria-label="Instalar la app" hidden></div>
+        <figure class="quote" id="quote">
+          <span class="q-mark" aria-hidden="true">“</span>
+          <div class="q-body">
+            <span class="q-label" id="qLabel">Frase del día</span>
+            <blockquote id="qText"></blockquote>
+            <figcaption id="qWho"></figcaption>
+          </div>
+        </figure>
+        <section class="view" id="view" aria-live="polite"></section>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div class="toast" id="toast" hidden></div>
+</body>
+</html>

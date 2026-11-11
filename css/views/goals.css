@@ -1,0 +1,77 @@
+/* Vista Objetivos */
+.goals { overflow: auto; height: 100%; padding: 20px 20px 32px; display: flex; flex-direction: column; gap: 20px; }
+.goals > * { width: 100%; max-width: 860px; margin-inline: auto; }
+
+/* Pestañas de horizonte */
+.hz { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.hz button { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 10px 12px; text-align: left; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.hz button:hover { background: var(--surface-2); }
+.hz button[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.hz button[aria-selected="true"] .bar { background: var(--surface); }
+.hz .n { font-weight: 600; display: flex; justify-content: space-between; gap: 6px; }
+.hz .cnt { font-family: var(--f-mono); font-size: 11px; color: var(--muted); font-weight: 400; }
+.hz small { color: var(--muted); font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Navegación del periodo y progreso global */
+.g-nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.g-nav h2 { margin: 0 6px; font-family: var(--f-display); font-weight: 500; font-size: 22px; min-width: 0; text-wrap: balance; }
+.g-nav h2::first-letter { text-transform: uppercase; }
+.g-nav .left { margin-left: auto; font-size: 12px; color: var(--muted); }
+.g-pct { display: flex; align-items: center; gap: 12px; }
+.g-pct .bar { flex: 1; height: 8px; }
+.g-pct span { font-family: var(--f-mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+/* Lista */
+.goal-list { display: flex; flex-direction: column; gap: 8px; }
+.goal { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border: 1px solid var(--line-soft); border-radius: 12px; background: var(--surface); }
+.goal.done { background: var(--bg); }
+.goal.done .gt { text-decoration: line-through; color: var(--faint); }
+.gmain { border: 0; background: transparent; text-align: left; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.gt { font-weight: 500; overflow-wrap: anywhere; }
+.gmain small { color: var(--faint); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gring { width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--surface-2) 0); position: relative; flex: none; }
+.gring::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--surface); }
+.goal.done .gring::after { background: var(--bg); }
+.gstep { display: flex; align-items: center; gap: 4px; }
+.gstep span { font-family: var(--f-mono); font-size: 12px; color: var(--muted); min-width: 56px; text-align: center; font-variant-numeric: tabular-nums; }
+.gstep button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: 16px; line-height: 1; padding: 0; }
+.gstep button:hover { background: var(--surface-2); }
+.g-carry { align-self: flex-start; }
+
+/* Formulario de nuevo objetivo */
+.gnew { border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; background: var(--bg); }
+.gnew h3 { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.gchoice { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gchoice button { border: 1.5px solid var(--line); background: var(--surface); border-radius: 12px; padding: 10px 12px; text-align: left; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gchoice button b { font-weight: 600; font-size: 15px; }
+.gchoice button small { color: var(--muted); font-size: 12px; line-height: 1.35; }
+.gchoice button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.gchoice button.quit[aria-pressed="true"] { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 10%, var(--surface)); }
+.gfields { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.gfields .field { flex: 1 1 240px; min-width: 0; }
+.gfields .field.sm { flex: 0 1 170px; }
+.gfields .btn { flex: none; }
+.ghelp { font-size: 12px; color: var(--muted); line-height: 1.45; margin: 0; }
+
+/* Objetivos de "dejar algo" */
+.qtag { display: inline-block; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, var(--surface)); border-radius: 6px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; text-decoration: none; }
+.qinfo { font-size: 12px; color: var(--muted); }
+.qinfo b { color: var(--fg); font-weight: 600; }
+.qdots { display: flex; flex-wrap: wrap; gap: 3px; }
+.qd { width: 15px; height: 15px; border-radius: 4px; border: 0; padding: 0; background: var(--surface-2); }
+.qd.ok { background: color-mix(in srgb, var(--c-trabajo) 75%, var(--surface)); }
+.qd.slip { background: var(--danger); }
+.qd.today { outline: 2px solid var(--fg); outline-offset: 1px; }
+.qd:disabled { cursor: default; opacity: .5; }
+.qbtn { font-size: 12px; padding: 5px 12px; white-space: nowrap; }
+.qbtn.undo { color: var(--danger); }
+
+@media (max-width: 860px) {
+  .app.goals-mode .goals { height: auto; overflow: visible; }
+  .gchoice button small { font-size: 11.5px; }
+  .hz { display: flex; overflow-x: auto; padding-bottom: 4px; }
+  .hz button { flex: 0 0 136px; }
+  .goals { padding: 16px 14px 28px; }
+  .goal { gap: 10px; padding: 10px 12px; }
+  .gstep span { min-width: 44px; }
+}
